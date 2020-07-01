@@ -1,38 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  margin: 0;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
+  box-sizing: border-box;
+  
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App,
+.App__text {
+  font-family: Roboto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App__header {
+  background-color: rgba(0, 0, 0, 0.02);
+
+  padding: 1rem;
+}
+
+.App__title, .App__tagline {
+  margin: 0;
+}
+
+.App__text {
+  flex-grow: 1;
+  resize: none;
+
+  font-size: 1.25rem;
+  padding: 1rem 0.75rem;
+
+  border: none;
+  outline: none !important;
+  overflow-y: scroll;
+}
+
+.App__footer {
+  padding: 1rem;
+  display: flex;
+}
+
+.App__bold-value {
+  display: flex;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.App__bold-value > input {
+  margin-right: 0.5rem;
+}
+
+.App__add-lines {
+  margin-left: auto;
+  display: flex;
+  user-select: none;
 }
