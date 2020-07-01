@@ -26,6 +26,7 @@ type BoldFormat = keyof typeof BOLD_FORMATS;
 type ChangeEvt = React.ChangeEvent<HTMLTextAreaElement>;
 type PasteEvt = React.ClipboardEvent<HTMLTextAreaElement>;
 
+const PIN = /(.+)\s*\n\s*pinned\s*\n\s*a message\s*\n\s*to this channel.\s*\n\s*See all the pins\.\s*\n/gm;
 const MSG_START = /^\s*(.*)((?:\d{2}\/\d{2}\/\d{4})|(?:(?:Yesterday|Today) at \d{1,2}:\d{2} [AP]M))\s*$/gm;
 
 export default function App() {
@@ -49,11 +50,9 @@ export default function App() {
   }
 
   function transformValue(value: string) {
-    const replaced = value.replace(
-      MSG_START, 
-      `\n\n${toBold('$1')} $2`
-    );
-
+    const replaced = value
+      .replace(PIN, '$1 pinned a message to this channel.')
+      .replace(MSG_START, `\n\n${toBold('$1')} $2`);
     setValue(replaced.trim());
   }
 
